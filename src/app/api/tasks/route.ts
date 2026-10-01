@@ -37,7 +37,7 @@ export async function GET(req: Request) {
     const allowedSort = ['due_date', 'difficulty', 'estimated_hours', 'priority', 'title'];
     const sortColumn = allowedSort.includes(sortBy) ? sortBy : 'due_date';
 
-    const sql = `SELECT * FROM tasks ORDER BY ${sortColumn}${order}`;
+    const sql = `SELECT * FROM tasks ORDER BY ${sortColumn} ${order}`;
     const tasks = await queryD1(sql);
 
     return NextResponse.json({ success: true, data: tasks });
